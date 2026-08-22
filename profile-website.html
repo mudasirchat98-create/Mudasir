@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mudasir — Content Creator & Developer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #0A0E27;
+    --ink: #FFFFFF;
+    --ink-soft: #C5C7FF;
+    --accent: #FF006E;
+    --accent2: #00D9FF;
+    --accent3: #8338EC;
+    --card: #1a1f3a;
+    --line: rgba(255,0,110,0.2);
+    --radius: 14px;
+  }
+  *{ box-sizing: border-box; }
+  html{ scroll-behavior: smooth; }
+  body{
+    margin:0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  a{ color: inherit; }
+  .wrap{ max-width: 920px; margin: 0 auto; padding: 0 24px; }
+
+  /* Nav */
+  nav{
+    display:flex; justify-content:space-between; align-items:center;
+    padding: 28px 0;
+  }
+  .logo{ font-family:'Fraunces', serif; font-weight:700; font-size:1.2rem; letter-spacing:0.01em; background: linear-gradient(90deg, var(--accent2), var(--accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .nav-links{ display:flex; gap:28px; font-family:'JetBrains Mono', monospace; font-size:0.78rem; }
+  .nav-links a{ text-decoration:none; color: var(--ink-soft); border-bottom:1px solid transparent; padding-bottom:2px; transition:.2s; }
+  .nav-links a:hover, .nav-links a:focus-visible{ color: var(--ink); border-color: var(--accent); }
+
+  /* Hero */
+  .hero{ position:relative; padding: 64px 0 88px; }
+  .eyebrow{
+    font-family:'JetBrains Mono', monospace; font-size:0.78rem; letter-spacing:0.08em;
+    text-transform:uppercase; color: var(--accent2); margin:0 0 16px;
+  }
+  h1{
+    font-family:'Fraunces', serif; font-weight:500; font-style:italic;
+    font-size: clamp(2.6rem, 7vw, 4.6rem); line-height:1.02; margin:0 0 20px; letter-spacing:-0.01em;
+  }
+  h1 .plain{ font-style:normal; font-weight:600; }
+  .tagline{ max-width:520px; font-size:1.08rem; color: var(--ink-soft); margin:0 0 32px; }
+  .cta-row{ display:flex; gap:14px; flex-wrap:wrap; align-items:center; }
+  .btn{
+    display:inline-block; font-family:'JetBrains Mono', monospace; font-size:0.82rem;
+    padding: 12px 22px; border-radius: 999px; text-decoration:none; border:2px solid var(--accent);
+    transition:.3s; font-weight:600;
+  }
+  .btn.solid{ background: var(--accent); color: var(--bg); border-color: var(--accent); }
+  .btn.solid:hover{ background: var(--accent2); border-color: var(--accent2); box-shadow: 0 0 20px rgba(0,217,255,0.4); }
+  .btn.ghost{ border-color: var(--accent2); color: var(--accent2); }
+  .btn.ghost:hover{ border-color: var(--accent); color: var(--accent); box-shadow: 0 0 20px rgba(255,0,110,0.3); }
+
+  /* Signature stamp */
+  .stamp{
+    position:absolute; top: 56px; right: 24px; width:104px; height:104px;
+    border-radius:50%; border:2px dashed var(--accent2); display:flex; align-items:center; justify-content:center;
+    box-shadow: 0 0 20px rgba(0,217,255,0.3);
+  }
+  .stamp svg{ width:100%; height:100%; animation: spin 16s linear infinite; }
+  .stamp-dot{
+    position:absolute; width:8px; height:8px; border-radius:50%; background: var(--accent);
+  }
+  @keyframes spin{ to{ transform: rotate(360deg); } }
+  @media (prefers-reduced-motion: reduce){ .stamp svg{ animation:none; } }
+  @media (max-width: 640px){ .stamp{ display:none; } }
+
+  section{ padding: 56px 0; border-top: 1px solid var(--line); }
+  .section-head{ display:flex; align-items:baseline; gap:14px; margin-bottom:32px; }
+  .section-num{ font-family:'JetBrains Mono', monospace; font-size:0.78rem; color: var(--accent); font-weight:700; }
+  h2{ font-family:'Fraunces', serif; font-weight:600; font-size:1.6rem; margin:0; background: linear-gradient(90deg, var(--accent2), var(--accent3)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+
+  /* About */
+  .about-grid{ display:grid; grid-template-columns: 140px 1fr; gap:32px; align-items:start; }
+  .avatar{
+    width:140px; height:140px; border-radius:50%; 
+    flex-shrink:0; border:3px solid var(--accent2); box-shadow: 0 0 30px rgba(0,217,255,0.4);
+    background-size: cover; background-position: center;
+    overflow: hidden;
+  }
+  .avatar img{
+    width:100%; height:100%; object-fit:cover;
+  }
+  .about-grid p{ color: var(--ink-soft); margin:0 0 14px; max-width: 60ch; }
+  @media (max-width:560px){ .about-grid{ grid-template-columns:1fr; } .avatar{ width:88px; height:88px; } }
+
+  /* Skills */
+  .tags{ display:flex; flex-wrap:wrap; gap:10px; }
+  .tag{
+    font-family:'JetBrains Mono', monospace; font-size:0.8rem; padding:8px 14px;
+    border:1px solid var(--accent2); border-radius:8px; background: transparent; color: var(--accent2);
+    transition:.2s;
+  }
+  .tag:hover{ background: rgba(0,217,255,0.1); }
+
+  /* Projects */
+  .projects{ display:grid; grid-template-columns: repeat(2, 1fr); gap:20px; }
+  @media (max-width:640px){ .projects{ grid-template-columns:1fr; } }
+  .card{
+    background: var(--card); border:1px solid var(--accent); border-radius: var(--radius);
+    padding:24px; transition:.3s; position:relative; overflow:hidden;
+  }
+  .card:hover{ transform: translateY(-4px); box-shadow: 0 12px 28px rgba(255,0,110,0.2), 0 0 20px rgba(0,217,255,0.1); border-color: var(--accent2); }
+  .card h3{ font-family:'Fraunces', serif; font-size:1.15rem; margin:0 0 8px; color: var(--accent2); }
+  .card p{ color: var(--ink-soft); font-size:0.94rem; margin:0 0 14px; }
+  .card .meta{ font-family:'JetBrains Mono', monospace; font-size:0.72rem; color: var(--accent); }
+
+  /* Contact / footer */
+  footer{ padding: 64px 0 48px; }
+  footer h2{ margin-bottom:16px; }
+  .contact-links{ display:flex; flex-wrap:wrap; gap:24px; font-family:'JetBrains Mono', monospace; font-size:0.9rem; }
+  .contact-links a{ text-decoration:none; border-bottom:2px solid transparent; padding-bottom:2px; color: var(--accent2); transition:.2s; }
+  .contact-links a:hover{ border-color: var(--accent); color: var(--accent); }
+  .fine-print{ margin-top:48px; font-size:0.78rem; color: var(--ink-soft); }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <nav>
+    <div class="logo">MUDASIR</div>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#work">Work</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+
+  <section class="hero" style="border-top:none; padding-top:24px;">
+    <p class="eyebrow">Content Creator × Developer</p>
+    <h1>Hi, I'm <span class="plain">Mudasir</span></h1>
+    <p class="tagline">Self-taught creator making relatable content on YouTube & Instagram. Learning AI, building websites, breaking free from the system — one video at a time.</p>
+    <div class="cta-row">
+      <a class="btn solid" href="#work">My Projects</a>
+      <a class="btn ghost" href="#contact">Contact Me</a>
+    </div>
+
+    <div class="stamp" aria-hidden="true">
+      <svg viewBox="0 0 100 100">
+        <defs><path id="circlePath" d="M 50,50 m -38,0 a 38,38 0 1,1 76,0 a 38,38 0 1,1 -76,0"/></defs>
+        <text font-family="JetBrains Mono, monospace" font-size="7.2" fill="#A9791F" letter-spacing="2">
+          <textPath href="#circlePath">OPEN TO WORK • OPEN TO WORK • </textPath>
+        </text>
+      </svg>
+      <div class="stamp-dot" style="top:50%; left:50%; transform:translate(-50%,-50%);"></div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="section-head"><span class="section-num">01</span><h2>About</h2></div>
+    <div class="about-grid">
+      <div class="avatar">
+        <img src="mudasir-profile.jpg" alt="Mudasir" />
+      </div>
+      <div>
+        <p>I'm Mudasir — a self-taught content creator and developer who didn't want to be confined by the traditional education system. After realizing college wasn't for me, I chose my own path: creating relatable content and learning to code on my terms.</p>
+        <p>Today, I create videos on YouTube and Instagram about motivation, personal thoughts, and tech tutorials. Simultaneously, I'm diving deep into Python and web development. My mission? To prove that incredible things don't require a degree — just passion, consistency, and real skill.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="section-head"><span class="section-num">02</span><h2>Skills</h2></div>
+    <div class="tags">
+      <span class="tag">Video Editing</span>
+      <span class="tag">Python</span>
+      <span class="tag">Web Development</span>
+      <span class="tag">Content Creation</span>
+      <span class="tag">AI Learning</span>
+      <span class="tag">Copywriting</span>
+      <span class="tag">Communication</span>
+      <span class="tag">Problem Solving</span>
+    </div>
+  </section>
+
+  <section id="work">
+    <div class="section-head"><span class="section-num">03</span><h2>What I Create</h2></div>
+    <div class="projects">
+      <div class="card">
+        <h3>YouTube Content</h3>
+        <p>Sharing real stories, motivation, and tech tutorials with an audience that values authenticity over perfection.</p>
+        <span class="meta">CONTENT CREATION • VIDEO EDITING</span>
+      </div>
+      <div class="card">
+        <h3>Instagram Stories</h3>
+        <p>Daily thoughts and relatable moments that connect with people who are also tired of the system.</p>
+        <span class="meta">CONTENT CREATION • COPYWRITING</span>
+      </div>
+      <div class="card">
+        <h3>Web Projects</h3>
+        <p>Building websites and applications as I learn web development — practical projects that solve real problems.</p>
+        <span class="meta">WEB DEVELOPMENT • HTML/CSS/JS</span>
+      </div>
+      <div class="card">
+        <h3>AI Experiments</h3>
+        <p>Exploring Python and AI to understand the future of automation and share learnings with my community.</p>
+        <span class="meta">PYTHON • AI • LEARNING</span>
+      </div>
+    </div>
+  </section>
+
+  <footer id="contact">
+    <div class="section-head"><span class="section-num">04</span><h2>Let's Connect</h2></div>
+    <div class="contact-links">
+      <a href="tel:+916006573404">+91 6006573404</a>
+      <a href="https://youtube.com" target="_blank" rel="noopener">YouTube</a>
+      <a href="https://instagram.com" target="_blank" rel="noopener">Instagram</a>
+      <a href="#">More Links</a>
+    </div>
+    <p class="fine-print">© <span id="year"></span> Mudasir. Self-made, not system-made.</p>
+  </footer>
+</div>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
